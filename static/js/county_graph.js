@@ -1,7 +1,7 @@
 
-var margin = {top: 20, right: 20, bottom: 30, left: 60},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 70, bottom: 30, left: 60},
+    width = 700 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var tip = d3.tip()
   .attr('class', 'd3-tip')
@@ -25,7 +25,7 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")

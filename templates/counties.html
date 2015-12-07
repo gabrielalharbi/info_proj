@@ -53,12 +53,15 @@
       <div class="jumbotron">
         <h1>Counties and their stats.</h1>
         <p class="lead"></p>
-        
       </div>
+      <div class="container"><div id="chart"></div></div>
+      <label><input type="checkbox"> Sort values</label>
       <div class="row marketing">
         <div class="col-lg-6">
             <div class="text-muted">
-              <iframe src="http://127.0.0.1:5002/county_graph" style="border: 3px solid #EEE;"frameborder="0" scrolling="no" height="500 - margin.top - margin.bottom" width="960 - margin.left - margin.right" align="centered"></iframe>
+
+              <script src="../static/js/county_graph.js"></script>
+              <!-- <iframe src="http://127.0.0.1:5002/county_graph" style="border: 3px solid #EEE;"frameborder="0" scrolling="no" height="500 - margin.top - margin.bottom" width="960 - margin.left - margin.right" align="centered"></iframe> -->
               <div id="MyEdit" align="center"></div>
             </div>
       </div>

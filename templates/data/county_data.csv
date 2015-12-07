@@ -1,59 +1,59 @@
 state,county_name,median_wage,population
-CA,Alameda County,"72,128",1510271
-CA,Alpine County,"49,392",1175
-CA,Amador County,"52,357",38091
-CA,Butte County,"42,395",220000
-CA,Calaveras County,"52,598",45578
-CA,Colusa County,"48,897",21419
-CA,Contra Costa County,"78,909",1049025
-CA,Del Norte County,"38,663",28610
-CA,El Dorado County,"63,002",181058
-CA,Fresno County,"43,741",930450
-CA,Glenn County,"42,129",28122
-CA,Humboldt County,"40,882",134623
-CA,Imperial County,"40,106",174528
-CA,Inyo County,"45,784",18546
-CA,Kern County,"46,688",839631
-CA,Kings County,"45,794",152982
-CA,Lake County,"36,973",64665
-CA,Lassen County,"50,487",34895
-CA,Los Angeles County,"54,443",9818605
-CA,Madera County,"41,223",150865
-CA,Marin County,"94,347",252409
-CA,Mariposa County,"45,251",18251
-CA,Mendocino County,"42,001",87841
-CA,Merced County,"41,003",255793
-CA,Modoc County,"37,055",9686
-CA,Mono County,"55,107",14202
-CA,Monterey County,"55,411",415057
-CA,Napa County,"68,619",136484
-CA,Nevada County,"55,246",98764
-CA,Orange County,"73,827",3010232
-CA,Placer County,"73,643",348432
-CA,Plumas County,"47,645",20007
-CA,Riverside County,"53,909",2189641
-CA,Sacramento County,"52,980",1418788
-CA,San Benito County,"66,780",55269
-CA,San Bernardino County,"52,112",2035210
-CA,San Diego County,"61,365",3095313
-CA,San Francisco County,"76,933",805235
-CA,San Joaquin County,"51,219",685306
-CA,San Luis Obispo County,"57,743",269637
-CA,San Mateo County,"91,061",718451
-CA,Santa Barbara County,"60,803",423895
-CA,Santa Clara County,"91,843",1781642
-CA,Santa Cruz County,"65,282",262382
-CA,Shasta County,"41,236",177223
-CA,Sierra County,"46,449",3240
-CA,Siskiyou County,"37,108",44900
-CA,Solano County,"63,398",413344
-CA,Sonoma County,"61,020",483878
-CA,Stanislaus County,"47,808",514453
-CA,Sutter County,"47,903",94737
-CA,Tehama County,"43,459",63463
-CA,Trinity County,"35,708",13786
-CA,Tulare County,"39,657",442179
-CA,Tuolumne County,"50,774",55365
-CA,Ventura County,"76,513",823318
-CA,Yolo County,"55,011",200849
-CA,Yuba County,"41,824",72155
+CA,Alameda County,72128,1510271
+CA,Alpine County,49392,1175
+CA,Amador County,52357,38091
+CA,Butte County,42395,220000
+CA,Calaveras County,52598,45578
+CA,Colusa County,48897,21419
+CA,Contra Costa County,78909,1049025
+CA,Del Norte County,38663,28610
+CA,El Dorado County,63002,181058
+CA,Fresno County,43741,930450
+CA,Glenn County,42129,28122
+CA,Humboldt County,40882,134623
+CA,Imperial County,40106,174528
+CA,Inyo County,45784,18546
+CA,Kern County,46688,839631
+CA,Kings County,45794,152982
+CA,Lake County,36973,64665
+CA,Lassen County,50487,34895
+CA,Los Angeles County,54443,9818605
+CA,Madera County,41223,150865
+CA,Marin County,94347,252409
+CA,Mariposa County,45251,18251
+CA,Mendocino County,42001,87841
+CA,Merced County,41003,255793
+CA,Modoc County,37055,9686
+CA,Mono County,55107,14202
+CA,Monterey County,55411,415057
+CA,Napa County,68619,136484
+CA,Nevada County,55246,98764
+CA,Orange County,73827,3010232
+CA,Placer County,73643,348432
+CA,Plumas County,47645,20007
+CA,Riverside County,53909,2189641
+CA,Sacramento County,52980,1418788
+CA,San Benito County,66780,55269
+CA,San Bernardino County,52112,2035210
+CA,San Diego County,61365,3095313
+CA,San Francisco County,76933,805235
+CA,San Joaquin County,51219,685306
+CA,San Luis Obispo County,57743,269637
+CA,San Mateo County,91061,718451
+CA,Santa Barbara County,60803,423895
+CA,Santa Clara County,91843,1781642
+CA,Santa Cruz County,65282,262382
+CA,Shasta County,41236,177223
+CA,Sierra County,46449,3240
+CA,Siskiyou County,37108,44900
+CA,Solano County,63398,413344
+CA,Sonoma County,61020,483878
+CA,Stanislaus County,47808,514453
+CA,Sutter County,47903,94737
+CA,Tehama County,43459,63463
+CA,Trinity County,35708,13786
+CA,Tulare County,39657,442179
+CA,Tuolumne County,50774,55365
+CA,Ventura County,76513,823318
+CA,Yolo County,55011,200849
+CA,Yuba County,41824,72155
