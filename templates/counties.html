@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="../static/css/counties.css" rel="stylesheet">
+    <link href="../static/css/county_graph.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <script src="../static/js/d3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    
+    
+
+    <script>
+    // function loadGraph(){
+    //   var chart = d3.select(#MyGraph)
+    //     .append("svg")
+    // }
+    // $(function(){
+    //   $("#MyGraph").load("county_graph.js");
+    // });
+    </script>
+    
+    <script>
+    
+    function buildHtmlTable() {
+      var myList = $("<div/>").html('{{data}}').text();
+      // document.getElementById("MyEdit").innerHTML = myList;
+      document.getElementById("MyEdit").innerHTML = myList;
+    }
+    </script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  </head>
+
+
+  <body onLoad="buildHtmlTable()">
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/index">Home</a></li>
+            <li role="presentation" class="active"><a href="/showCounties">Counties</a></li>
+            <li role="presentation"><a href="/showDebts">Debts</a></li>
+            <li role="presentation"><a href="/showEarnings">Earnings</a></li>
+            <li role="presentation"><a href="/showEmployers">Employers</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Finances of California</h3>
+      </div>
+      <div class="jumbotron">
+        <h1>Counties and their stats.</h1>
+        <p class="lead"></p>
+        
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-6">
+            <div class="text-muted">
+              <iframe src="http://127.0.0.1:5002/county_graph" style="border: 3px solid #EEE;"frameborder="0" scrolling="no" height="500 - margin.top - margin.bottom" width="960 - margin.left - margin.right" align="centered"></iframe>
+              <div id="MyEdit" align="center"></div>
+            </div>
+      </div>
+    </div>
+    <div id="container">
+      <footer class="footer">
+        <p>&copy; Gabriel Al-Harbi 2015</p>
+      </footer>
+    </div>
+  </body>
+</html>
+

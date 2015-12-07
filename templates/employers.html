@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <script>
+    function buildHtmlTable() {
+      var myList = $("<div/>").html('{{data}}').text();
+      document.getElementById("MyEdit").innerHTML = myList;
+    }
+    </script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  </head>
+
+
+  <body onLoad="buildHtmlTable()">
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/index">Home</a></li>
+            <li role="presentation"><a href="/showCounties">Counties</a></li>
+            <li role="presentation"><a href="/showDebts">Debts</a></li>
+            <li role="presentation"><a href="/showEarnings">Earnings</a></li>
+            <li role="presentation" class="active"><a href="/showEmployers">Employers</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Finances of California</h3>
+      </div>
+      <div class="jumbotron">
+        <h1>Employers and their Counties.</h1>
+        <p class="lead"></p>
+<!--         <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a></p> -->
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-6">
+            <div class="text-muted">
+              <div id="MyEdit"></div>
+            </div>
+      </div>
+    </div>
+    <style>
+      html,
+      body {
+          margin:0;
+          padding:10;
+          height:100%;
+      }
+      #container {
+          min-height:100%;
+          position:relative;
+      }
+      #header {
+          background:#ff0;
+          padding:10px;
+      }
+      #body {
+          padding:10px;
+          padding-bottom:60px;   /* Height of the footer */
+      }
+      #footer {
+          position:absolute;
+          bottom:0;
+          width:100%;
+          height:60px;   /* Height of the footer */
+          background:#6cf;
+      }
+    </style>
+    <div id="container">
+      <footer class="footer">
+        <p>&copy; Gabriel Al-Harbi 2015</p>
+      </footer>
+    </div>
+  </body>
+</html>
+
