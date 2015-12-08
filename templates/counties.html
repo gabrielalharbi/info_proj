@@ -10,32 +10,31 @@
     <script src="../static/js/d3.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-    
-    
+    <script>
+      jQuery(document).ready(function() {
+      jQuery('.tabs .tab-links a').on('click', function(e)  {
+          var currentAttrValue = jQuery(this).attr('href');
+          // Show/Hide Tabs
+          // jQuery('.tabs ' + currentAttrValue).slideDown(400).siblings().slideUp(400);
+          // Show/Hide Tabs
+          jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+          // Change/remove current tab to active
+          jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+          e.preventDefault();
+          });
+      });
+    </script>
 
     <script>
-    // function loadGraph(){
-    //   var chart = d3.select(#MyGraph)
-    //     .append("svg")
-    // }
-    // $(function(){
-    //   $("#MyGraph").load("county_graph.js");
-    // });
+      function buildHtmlTable() {
+        var myList = $("<div/>").html('{{data}}').text();
+        document.getElementById("county_table").innerHTML = myList;
+      }
     </script>
-    
-    <script>
-    
-    function buildHtmlTable() {
-      var myList = $("<div/>").html('{{data}}').text();
-      // document.getElementById("MyEdit").innerHTML = myList;
-      document.getElementById("MyEdit").innerHTML = myList;
-    }
-    </script>
+
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
   </head>
-
-
   <body onLoad="buildHtmlTable()">
     <div class="container">
       <div class="header">
@@ -54,17 +53,27 @@
         <h1>Counties and their stats.</h1>
         <p class="lead"></p>
       </div>
-      <div class="container"><div id="chart"></div></div>
-      <label><input type="checkbox"> Sort values</label>
       <div class="row marketing">
         <div class="col-lg-6">
             <div class="text-muted">
-
-              <script src="../static/js/county_graph.js"></script>
-              <!-- <iframe src="http://127.0.0.1:5002/county_graph" style="border: 3px solid #EEE;"frameborder="0" scrolling="no" height="500 - margin.top - margin.bottom" width="960 - margin.left - margin.right" align="centered"></iframe> -->
-              <div id="MyEdit" align="center"></div>
+              <div class="tabs">
+                <ul class="tab-links">
+                    <li class="active"><a href="#tab1">Tab #1</a></li>
+                    <li><a href="#tab2">Tab #2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab1" class="tab active">
+                      <div id="county_table" align="center"></div>                      
+                    </div>
+                    <div id="tab2" class="tab">
+                      <div class="container"><div id="chart"></div></div>
+                      <label><input type="checkbox"> Sort values</label>
+                      <script src="../static/js/county_graph.js"></script>                
+                  </div>
+                </div>        
             </div>
       </div>
+    </div>
     </div>
     <div id="container">
       <footer class="footer">
