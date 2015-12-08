@@ -1,6 +1,6 @@
 
-var margin = {top: 20, right: 70, bottom: 30, left: 60},
-    width = 650 - margin.left - margin.right,
+var margin = {top: 20, right: 170, bottom: 30, left: 60},
+    width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 var tip = d3.tip()
@@ -100,15 +100,11 @@ d3.csv("http://127.0.0.1:5002/templates/data/county_data.csv", type, function(er
       .on('mouseout', tip.hide);
   
 
-  d3.select("input").on("change", change);
-
-  var sortTimeout = setTimeout(function() {
-    d3.select("input").property("checked", true).each(change);
-  }, 2000);
+  d3.select("#check1").on("change", change);
+  d3.select("#check2").on("change", change2);
 
   function change() {
-    clearTimeout(sortTimeout);
-
+    d3.select("#check2").property("checked",false);
     // Copy-on-write since tweens are evaluated after a delay.
     var x0 = x.domain(data.sort(this.checked
         ? function(a, b) { return b.population - a.population; }
@@ -122,7 +118,34 @@ d3.csv("http://127.0.0.1:5002/templates/data/county_data.csv", type, function(er
         .map(function(d) { return d.county_name; }))
         .copy();
 
+    svg.selectAll(".bar")
+        .sort(function(a, b) { return x0(a.county_name) - x0(b.county_name); });
+    svg.selectAll(".bar2")
+        .sort(function(a, b) { return x0(a.county_name) - x0(b.county_name); });
 
+    var transition = svg.transition().duration(750),
+        delay = function(d, i) { return i * 50; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.county_name); });
+    transition.selectAll(".bar2")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.county_name); });
+
+    transition.select(".x.axis")
+        .call(xAxis)
+      .selectAll("g")
+        .delay(delay);
+  }
+  function change2() {
+    d3.select("#check1").property("checked",false);
+    // Copy-on-write since tweens are evaluated after a delay.
+    var x0 = x.domain(data.sort(this.checked
+        ? function(a, b) { return b.median_wage - a.median_wage; }
+        : function(a, b) { return d3.ascending(a.county_name, b.county_name); })
+        .map(function(d) { return d.county_name; }))
+        .copy();
 
     svg.selectAll(".bar")
         .sort(function(a, b) { return x0(a.county_name) - x0(b.county_name); });

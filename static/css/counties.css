@@ -46,6 +46,7 @@ body {
         display:block;
         clear:both;
         content:'';
+        text-decoration:none;
     }
  
     .tab-links li {
@@ -53,7 +54,7 @@ body {
         float:left;
         list-style:none;
         border-radius:3px;
-        box-shadow:0px 0px 3px rgba(0,0,0,0.15);
+        box-shadow:0px 0px 1px rgba(0,0,0,0.15);
         background:#fff;
     }
  
@@ -61,10 +62,9 @@ body {
             padding:9px 10px;
             display:inline-block;
             border-radius:3px 3px 0px 0px;
-            background:rgba(70,130,180,.4);
-            font-size:16px;
-            font-weight:600;
-            color:#4c4c4c;
+            background:white;
+            font-size:14px;
+            color:rgba(70,130,180,1);
             transition:all linear 0.15s;
         }
  
@@ -74,15 +74,16 @@ body {
       }
  
     li.active a, li.active a:hover {
-        background:#fff;
-        color:#4c4c4c;
+        background:rgba(70,130,180,1);
+        color:white;
+        text-decoration:none;
     }
  
     /*----- Content of Tabs -----*/
     .tab-content {
         padding:30px;
         border-radius:3px;
-        box-shadow:0px 0px 3px rgba(0,0,0,0.15);
+        box-shadow:0px 0px 1px rgba(0,0,0,0.15);
         background:#fff;
     }
  
