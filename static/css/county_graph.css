@@ -2,6 +2,15 @@
   fill: steelblue;
 }
 
+.bar2 {
+  fill: red;
+  fill-opacity: .4;
+}
+
+.bar2:hover {
+  fill: orange;
+}
+
 .bar:hover {
   fill: orange;
 }

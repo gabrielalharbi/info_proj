@@ -67,22 +67,28 @@ def counties():
     f.close()
     html_parser = html.parser.HTMLParser()
     results = html_parser.unescape(create_table(results))
-
-    # list_data = [10, 20, 30, 20, 15, 30, 45]
-    # bar = vincent.Bar(list_data)
     return render_template('counties.html', data=results)
 
 @app.route('/showDebts',methods=['POST','GET'])
 def debts():
     connection = mysql.connector.connect(user=user,password=password,host=port,database=db)
     cursor = connection.cursor(buffered=True)
-    query = 'SELECT * FROM debt;'
+    query = 'SELECT * FROM state_debts;'
     cursor.execute(query)
     results = cursor.fetchall()
+    data = results
+    f=open('templates/data/debts_data.csv','w+')
+    csvwriter = csv.writer(f)
+    i = 0
+    for item in data:
+        if i == 0:
+            i = i + 1
+            csvwriter.writerow(('state','average_student_debt','average_credit_card_debt','average_mortgage','average_auto_loan','number_of_bankruptcies'))
+        csvwriter.writerow(item[1:-1])
+    f.close()
     html_parser = html.parser.HTMLParser()
     results = html_parser.unescape(create_table(results))
     return render_template('debts.html', data=results)
-
 
 
 @app.route('/showEarnings',methods=['POST','GET'])
@@ -92,6 +98,16 @@ def earnings():
     query = 'SELECT * FROM earning;'
     cursor.execute(query)
     results = cursor.fetchall()
+    data = results
+    f=open('templates/data/earning_data.csv','w+')
+    csvwriter = csv.writer(f)
+    i = 0
+    for item in data:
+        if i == 0:
+            i = i + 1
+            csvwriter.writerow(('male_median_wage','female_median_wage','state','county_name'))
+        csvwriter.writerow(item[1:-1])
+    f.close()
     html_parser = html.parser.HTMLParser()
     results = html_parser.unescape(create_table(results))
     return render_template('earnings.html', data=results)
@@ -105,42 +121,21 @@ def employers():
     query = 'SELECT * FROM employer;'
     cursor.execute(query)
     results = cursor.fetchall()
+    data = results
+    f=open('templates/data/employer_data.csv','w+')
+    csvwriter = csv.writer(f)
+    i = 0
+    for item in data:
+        if i == 0:
+            i = i + 1
+            csvwriter.writerow(('employer_name','num_employees','founded_year','market_value','company_type'))
+        csvwriter.writerow(item[1:-1])
+    f.close()
     html_parser = html.parser.HTMLParser()
     results = html_parser.unescape(create_table(results))
     return render_template('employers.html', data=results)
 
 
-@app.route('/signUp',methods=['POST','GET'])
-def signUp():
-    try:
-        _name = request.form['inputName']
-        _email = request.form['inputEmail']
-        _password = request.form['inputPassword']
-
-        # validate the received values
-        if _name and _email and _password:
-            
-            # All Good, let's call MySQL
-            
-            conn = mysql.connect()
-            cursor = conn.cursor()
-            _hashed_password = generate_password_hash(_password)
-            cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
-            data = cursor.fetchall()
-
-            if len(data) is 0:
-                conn.commit()
-                return json.dumps({'message':'User created successfully !'})
-            else:
-                return json.dumps({'error':str(data[0])})
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
-
-    except Exception as e:
-        return json.dumps({'error':str(e)})
-    finally:
-        cursor.close() 
-        conn.close()
 
 if __name__ == "__main__":
     app.run(port=5002)
