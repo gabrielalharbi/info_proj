@@ -59,14 +59,14 @@ def main():
 def counties():
     connection = mysql.connector.connect(user=user,password=password,host=port,database=db)
     cursor = connection.cursor(buffered=True)
-    query = 'SELECT * FROM county;'
+    query = 'SELECT *, (male_population/female_population) as male_female_income FROM county;'
     cursor.execute(query)
     results = cursor.fetchall()
     data = results
     f=open('templates/data/county_data.csv','w+')
     csvwriter = csv.writer(f)
     i = 0
-    title_list = ['largest_employer','state','county_name','median_wage','population','male_population','female_population','households']
+    title_list = ['largest_employer','state','county_name','median_wage','population','male_population','female_population','households','male_female_income']
     for item in data:
         if i == 0:
             i = i + 1
@@ -75,7 +75,9 @@ def counties():
     f.close()
     html_parser = html.parser.HTMLParser()
     title_list2 = ['Largest Employer','State','County','Median Wage','Population','Male Population','Female Population','Households']
-   
+    query2 = 'SELECT * from county;'
+    cursor.execute(query2)
+    results = cursor.fetchall()
     results = html_parser.unescape(create_table(results,title_list2))
     cursor.close()
     connection.close()
@@ -118,7 +120,13 @@ def earnings():
     f=open('templates/data/earning_data.csv','w+')
     csvwriter = csv.writer(f)
     i = 0
-    title_list = ['male_median_wage','female_median_wage','state','county_name']
+    title_list = ['County_Name','Total_households','Total_households_Less_than_10000','Percent_Total_households_Less_than_10000','Total_households_10000_14999',
+    'Percent_Total_households_10000_14999','Total_households_15000_24999','Percent_Total_households_15000_to_24999','Total_households_25000_to_34999',
+    'Percent_Total_households_25000_34999','Total_households_35000_to_49999','Percent_Total_households_35000_to_49999','Total_households_50,000_to_74999',
+    'Percent_Total_households_50000_to_74999','Total_households_75000_to_99999','Percent_Total_households_75000_to_99999','Total_households_100000_to_149999',
+    'Percent_Total_households_100000_to_149999','Total_households_150000_to_199999','Percent_Totalhouseholds_150000_to_199999','Total_households_200000_more',
+    'Percent_Total_households_200000_more','Total_households_Median_household_income','Total_households_Mean_household_income','Median_earnings_for_workers',
+    'Median_earnings_for_male_fulltime','Median_earnings_for_female_fulltime']
     for item in data:
         if i == 0:
             i = i + 1
@@ -126,7 +134,10 @@ def earnings():
         csvwriter.writerow(item[1:-1])
     f.close()
     html_parser = html.parser.HTMLParser()
-    title_list2 = ['Male Median Wage','Feamle Median Wage','State','County Name']
+    title_list2 = []
+    for item in title_list:
+        title_list2.append(item.replace('_'," "))
+    
     results = html_parser.unescape(create_table(results,ns=10,title_list=title_list2))
     cursor.close()
     connection.close()
