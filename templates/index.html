@@ -1,79 +1,104 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Python Flask Bucket List App</title>
+<head>
+  <title>Python Flask Bucket List App</title>
 
-   
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/counties.css" rel="stylesheet">
+  <link href="../static/css/county_graph.css" rel="stylesheet">
+  <script src="../static/js/jquery-1.11.2.js"></script>
+  <script src="../static/js/signUp.js"></script>
+  <script src="../static/js/d3.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-   
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="/index">Home</a></li>
-            <li role="presentation"><a href="/showCounties">Counties</a></li>
- 	          <li role="presentation"><a href="/showDebts">Debts</a></li>
-            <li role="presentation"><a href="/showEarnings">Earnings</a></li>
-            <li role="presentation"><a href="/showEmployers">Employers</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Finances of California</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1>Insert stuff here.</h1>
-        <p class="lead"></p>
-<!--         <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a></p> -->
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-<!--           <h4>Bucket List</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p> -->
-      </div>
-
-      <style>
-      html,
-      body {
-          margin:0;
-          padding:10;
-          height:100%;
-      }
-      #container {
-          min-height:100%;
-          position:relative;
-      }
-      #header {
-          background:#ff0;
-          padding:10px;
-      }
-      #body {
-          padding:10px;
-          padding-bottom:60px;   /* Height of the footer */
-      }
-      #footer {
-          position:absolute;
-          bottom:0;
-          width:100%;
-          height:60px;   /* Height of the footer */
-          background:#6cf;
-      }
-      </style>
-      <div id="container">
-        <footer class="footer">
-          <p>&copy; Gabriel Al-Harbi 2015</p>
-        </footer>
-      </div>
-
+  <div class="container">
+    <div class="header">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" class="active"><a href="/index">Home</a></li>
+          <li role="presentation"><a href="/showCounties">Counties</a></li>
+          <li role="presentation"><a href="/showDebts">Debts</a></li>
+          <li role="presentation"><a href="/showEarnings">Earnings</a></li>
+          <li role="presentation"><a href="/showEmployers">Employers</a></li>
+          <li role="presentation"><a href="/showState">State</a></li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">Finances</h3>
     </div>
-  </body>
+
+    <div class="jumbotron" >
+      <h1 style="font-size:32px">The Finances of California <br>and other useful data.</h1>
+      <p class="lead"></p>
+      <!--         <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a></p> -->
+    </div>
+
+    <div class="row marketing">
+      <div class="col-lg-6">
+        <div class="text-muted">
+          <div class="tabs" align="center" style="font-size:16px">
+            <div class="tab-links">
+              <li class="active"><a href="#tab1">Background Information</a></li>
+            </div>
+            <div class="tab-content">
+              <div id="tab1" class="tab active">
+                <p align="center">There has been a recent financial dilemma within the United States wherein financial
+                  growth has occurred at a noticeable rate yet has been disproportionally distributed within the
+                  country. This distribution is said to be uneven in terms of economic class and gender and there exists countless articles claiming various things are to blame for this dilemma, but most seem to provide little data to support these claims. Even when
+                  data is provided, it is often in too large or too small of a scope to be used in a meaningful way; the context is
+                  purely in the perspective of the country or very specific areas, which often leaves misunderstanding. This websites's purpose is to allow easier access to California's financial data and allow a wider audience an oppertunity to find their own causes of this problem. This issue is complex and not one answer will ever be the right one, but hopefully through easily accessible data this puzzle can be pieced together.
+                </p>
+              </div>        
+            </div>
+          </div>
+        </div> 
+      </div>
+
+<!--           <h4>Bucket List</h4>
+  <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p> -->
+</div>
+
+<style>
+  html,
+  body {
+    margin:0;
+    padding:10;
+    height:100%;
+  }
+  #container {
+    min-height:100%;
+    position:relative;
+  }
+  #header {
+    background:#ff0;
+    padding:10px;
+  }
+  #body {
+    padding:10px;
+    padding-bottom:60px;   /* Height of the footer */
+  }
+  #footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:#6cf;
+  }
+</style>
+<div id="container">
+  <footer class="footer">
+    <p>&copy; Gabriel Al-Harbi 2015</p>
+  </footer>
+</div>
+
+</div>
+</body>
 </html>
 

@@ -2,6 +2,11 @@
   fill: steelblue;
 }
 
+
+.bar3:hover {
+  fill:orange;
+}
+
 .bar2 {
   fill: red;
   fill-opacity: .4;

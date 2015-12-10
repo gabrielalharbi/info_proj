@@ -28,7 +28,9 @@
   <script>
     function buildHtmlTable() {
       var myList = $("<div/>").html('{{data}}').text();
-      document.getElementById("table").innerHTML = myList;
+      document.getElementById("county_table").innerHTML = myList;
+      var myList2 = $("<div/>").html('{{results}}').text();
+      document.getElementById("state_table").innerHTML = myList2;
     }
   </script>
 
@@ -44,36 +46,46 @@
           <li role="presentation"><a href="/showCounties">Counties</a></li>
           <li role="presentation"><a href="/showDebts">Debts</a></li>
           <li role="presentation"><a href="/showEarnings">Earnings</a></li>
-          <li role="presentation" class="active"><a href="/showEmployers">Employers</a></li>
-          <li role="presentation"><a href="/showState">State</a></li>
+          <li role="presentation"><a href="/showEmployers">Employers</a></li>
+          <li role="presentation" class="active"><a href="/showState">State</a></li>
         </ul>
       </nav>
       <h3 class="text-muted">Finances</h3>
     </div>
     <div class="jumbotron" align="center">
-      <h1 style="font-size:32px">Major employers and their data.</h1>
+      <h1 style="font-size:32px">Stats of the State.</h1>
       <p class="lead"></p>
     </div>
     <div class="row marketing">
       <div class="col-lg-6">
         <div class="text-muted">
-          <div class="tabs" align="center" style="font-size:16px">
+          <div class="tabs" align="center">
             <div class="tab-links">
               <li class="active"><a href="#tab1">Information</a></li>
-              <li><a href="#tab2">Graphs</a></li>
-              <li><a href="#tab3">Data</a></li>
+              <li><a href="#tab2">Median Deviation</a></li>
+              <li><a href="#tab3">State Data</a></li>
+              <li><a href="#tab4">State and County Data</a></li>
             </div>
             <div class="tab-content">
-              <div id="tab1" class="tab active">
-                
+              <div id="tab1" class="tab active" style="font-size:16px">
+                <p align="center"><b>Median Deviation</b>: This graph shows the ratio between the median wage of a county in comparison to the state. This helps indicate whether or not certain counties are disproportionaley richer or poorer than other counties or the median of the state. This graph does not take into account cost of living of an area or the debt of the county, which could factor into why certain counties deviate further than others.</p>
+                <br>
+                <p align="center"><b>State Data</b>: This data set contains general information about the state. It holds the median wage, state revenue and number of counties in california. This is meant to be used in comparison with other counties.</p>
+                <br>
+                <p align="center"><b>State and County Data</b>: This data set contains the ratio of overall median wage for the state and median wage overall/male/female on a by county basis. This data is meant to help differentiate how much of a gap there is between the overall state and particular counties/genders.</p>
               </div>
               <div id="tab2" class="tab">
-                
+                <div id="chart7"></div>
+                <label><input type="checkbox" id="check7">Sort Median Deviation</input></label>
+              
+                <script src="../static/js/state_graph.js"></script>
               </div>
               <div id="tab3" class="tab">
-                <div id="table" align="center"></div>
+                <div id="county_table" align="center"></div>
               </div>
-              
+              <div id="tab4" class="tab">
+                <div id="state_table" align="center"></div>
+              </div>
             </div>        
           </div>
         </div>

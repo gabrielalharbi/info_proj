@@ -22,7 +22,7 @@ db = 'info257'
 
 
 def create_table(material,title_list=None,ns=6):
-    table ='<div class="datagrid"><table>                           \
+    table ='<div class="datagrid"><table border=1 frame=void rules="rows">                           \
             <thead></thead>                                         \
             <tfoot><tr></tr></tfoot><tbody>'
     i = 0
@@ -61,6 +61,61 @@ def earning_data():
     root_dir = os.path.dirname(os.getcwd())
     return send_from_directory(os.path.join(root_dir,'flask','templates','data'),'earning_data.csv')
 
+
+@app.route('/templates/data/county_deviation_data.csv', methods=['GET'])
+def county_deviation_data():
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir,'flask','templates','data'),'county_deviation_data.csv')
+
+
+@app.route('/showState')
+def state():
+    connection = mysql.connector.connect(user=user,password=password,host=port,database=db)
+    cursor = connection.cursor(buffered=True)
+    query = 'SELECT * FROM state;'
+    cursor.execute(query)
+    results = cursor.fetchall()
+    data = results
+    f=open('templates/data/employer_data.csv','w+')
+    csvwriter = csv.writer(f)
+    i = 0
+    title_list = ['state_name','median_wage','state_finances','number_of_counties']
+    for item in data:
+        if i == 0:
+            i = i + 1
+            csvwriter.writerow(title_list)
+        csvwriter.writerow(item)
+    f.close()
+    html_parser = html.parser.HTMLParser()
+    title_list2 = ['State Name','Median Wage','State Revenue (in Billions)','Number of Counties']
+    results = html_parser.unescape(create_table(results,title_list=title_list2))
+    query2 = """SELECT b.county_name, 
+                        b.median_wage/a.median_wage as county_deviation,
+                        c.median_male_earnings_full_time/a.median_wage as male_deviation, 
+                        c.median_female_earnings_full_time/a.median_wage as female_deviation 
+                FROM state a 
+                JOIN county 
+                    b on a.state_name = b.state
+                JOIN earning
+                    c on c.County_Name = b.county_name"""
+    cursor.execute(query2)
+    results2 = cursor.fetchall()
+    f=open('templates/data/county_deviation_data.csv','w+')
+    csvwriter = csv.writer(f)
+    i = 0
+    title_list = ['county_name','county_deviation','male_deviation','female_deviation']
+    for item in results2:
+        if i == 0:
+            i = i + 1
+            csvwriter.writerow(title_list)
+        csvwriter.writerow(item)
+    f.close()
+    title_list2 = ['County Name', 'County Wage Deviation', 'Male Wage Deviation', 'Female Wage Deviation']
+    results2 = html_parser.unescape(create_table(results2,title_list=title_list2))
+
+    cursor.close()
+    connection.close()
+    return render_template('state.html', data=results, results=results2)
 
 
 
