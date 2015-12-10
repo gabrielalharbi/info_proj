@@ -50,6 +50,20 @@ def county_data():
     root_dir = os.path.dirname(os.getcwd())
     return send_from_directory(os.path.join(root_dir,'flask','templates','data'),'county_data.csv')
 
+@app.route('/templates/data/debts_data.csv', methods=['GET'])
+def debt_data():
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir,'flask','templates','data'),'debts_data.csv')
+
+
+@app.route('/templates/data/earning_data.csv', methods=['GET'])
+def earning_data():
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir,'flask','templates','data'),'earning_data.csv')
+
+
+
+
 @app.route('/')
 @app.route('/index')
 def main():
@@ -93,13 +107,13 @@ def debts():
     data = results
     f=open('templates/data/debts_data.csv','w+')
     csvwriter = csv.writer(f)
-    i = 0
-    title_list = ['state','average_student_debt','average_credit_card_debt','average_mortgage','average_auto_loan','number_of_bankruptcies']
-    for item in data:
+    title_list = ['state','debt_type','debt_amount']
+    debt_types = ['average_student_debt','average_credit_card_debt','average_mortgages','average_auto_loan']
+    for i in range(len(debt_types)):
         if i == 0:
-            i = i + 1
             csvwriter.writerow(title_list)
-        csvwriter.writerow(item[1:-1])
+        new_list = [data[0][0],debt_types[i],data[0][i+1]]
+        csvwriter.writerow(new_list)
     f.close()
     html_parser = html.parser.HTMLParser()
     title_list2 = ['State','Average Student Debt','Average Credit Card Debt', 'Average Mortgage','Average Auto Loan','Number of Bankruptcies']
@@ -131,13 +145,16 @@ def earnings():
         if i == 0:
             i = i + 1
             csvwriter.writerow(title_list)
-        csvwriter.writerow(item[1:-1])
+        csvwriter.writerow(item)
     f.close()
+    title_list = [title_list[0],'Median_Household_Wage',title_list[-2],title_list[-1]]
     html_parser = html.parser.HTMLParser()
     title_list2 = []
     for item in title_list:
         title_list2.append(item.replace('_'," "))
-    
+    query2 = 'SELECT a.county_name, median_wage, median_male_earnings_full_time, median_female_earnings_full_time FROM earning a JOIN county b on a.county_name=b.county_name;'
+    cursor.execute(query2)
+    results = cursor.fetchall()
     results = html_parser.unescape(create_table(results,ns=10,title_list=title_list2))
     cursor.close()
     connection.close()

@@ -1,2 +1,5 @@
-state,average_student_debt,average_credit_card_debt,average_mortgage,average_auto_loan,number_of_bankruptcies
-20340,7217,303745,13900
+state,debt_type,debt_amount
+CA,average_student_debt,20340
+CA,average_credit_card_debt,7217
+CA,average_mortgages,303745
+CA,average_auto_loan,13900
