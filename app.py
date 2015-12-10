@@ -136,15 +136,17 @@ def counties():
     csvwriter = csv.writer(f)
     i = 0
     title_list = ['largest_employer','state','county_name','median_wage','population','male_population','female_population','households','male_female_income']
+    title_list = title_list[1:]
     for item in data:
         if i == 0:
             i = i + 1
             csvwriter.writerow(title_list)
-        csvwriter.writerow(item)
+        csvwriter.writerow(item[1:])
     f.close()
     html_parser = html.parser.HTMLParser()
     title_list2 = ['Largest Employer','State','County','Median Wage','Population','Male Population','Female Population','Households']
-    query2 = 'SELECT * from county;'
+    title_list2 = title_list2[1:]
+    query2 = 'SELECT county_name,state,median_wage,population,male_population,female_population,households from county;'
     cursor.execute(query2)
     results = cursor.fetchall()
     results = html_parser.unescape(create_table(results,title_list2))
@@ -191,7 +193,7 @@ def earnings():
     i = 0
     title_list = ['County_Name','Total_households','Total_households_Less_than_10000','Percent_Total_households_Less_than_10000','Total_households_10000_14999',
     'Percent_Total_households_10000_14999','Total_households_15000_24999','Percent_Total_households_15000_to_24999','Total_households_25000_to_34999',
-    'Percent_Total_households_25000_34999','Total_households_35000_to_49999','Percent_Total_households_35000_to_49999','Total_households_50,000_to_74999',
+    'Percent_Total_households_25000_34999','Total_households_35000_to_49999','Percent_Total_households_35000_to_49999','Total_households_50000_to_74999',
     'Percent_Total_households_50000_to_74999','Total_households_75000_to_99999','Percent_Total_households_75000_to_99999','Total_households_100000_to_149999',
     'Percent_Total_households_100000_to_149999','Total_households_150000_to_199999','Percent_Totalhouseholds_150000_to_199999','Total_households_200000_more',
     'Percent_Total_households_200000_more','Total_households_Median_household_income','Total_households_Mean_household_income','Median_earnings_for_workers',

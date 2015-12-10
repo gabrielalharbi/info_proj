@@ -3,7 +3,7 @@ var margin = {top: 20, right: 170, bottom: 30, left: 60},
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-var tip = d3.tip()
+var tip2 = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
@@ -38,7 +38,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-svg.call(tip);
+svg.call(tip2);
 
 d3.csv("http://127.0.0.1:5002/templates/data/county_data.csv", type, function(error, data) {
   if (error) throw error;
@@ -85,8 +85,8 @@ d3.csv("http://127.0.0.1:5002/templates/data/county_data.csv", type, function(er
       .attr("width", x.rangeBand())
       .attr("y", function(d) { if (isNaN(d.median_wage) == false) return parseInt(z(d.median_wage)); })
       .attr("height", function(d) { if (isNaN(d.median_wage) == false) return height - parseInt(z(d.median_wage)); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide);
 
   svg.selectAll(".bar")
       .data(data)
@@ -96,8 +96,8 @@ d3.csv("http://127.0.0.1:5002/templates/data/county_data.csv", type, function(er
       .attr("width", x.rangeBand())
       .attr("y", function(d) { if (isNaN(d.population) == false) return parseInt(y(d.population)); })
       .attr("height", function(d) { if (isNaN(d.population) == false) return height - parseInt(y(d.population)); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide);
   
 
   d3.select("#check1").on("change", change);
